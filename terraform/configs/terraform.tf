@@ -1,7 +1,7 @@
 terraform {
-  required_version = ">= 0.12"
+  required_version = ">= 1.2.0"
   required_providers {
-    aws {
+    aws = {
       source  = "hashicorp/aws"
       version = "~> 4.16"
     }
@@ -9,7 +9,33 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-west-2"
+  profile = "default"
+  region  = "us-west-2"
+}
+
+data "aws_ami" "app_server" {
+  most_recent = true
+  owners = [
+    "099720109177"
+  ]
+  filter {
+    name = "name"
+    values = [
+      "ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"
+    ]
+  }
+  filter {
+    name = "virtualization-type"
+    values = [
+      "hvm"
+    ]
+  }
+  filter {
+    name = "architecture"
+    values = [
+      "x86_64"
+    ]
+  }
 }
 
 resource "aws_instance" "app_server" {
