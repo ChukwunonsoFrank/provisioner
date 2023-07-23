@@ -1,6 +1,7 @@
 import { createApp, h } from 'vue'
 import { createInertiaApp } from '@inertiajs/vue3'
 import '~/css/main.css'
+import('preline')
 
 createInertiaApp({
   title: () => 'VITS stack',

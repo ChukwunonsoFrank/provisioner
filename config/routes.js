@@ -18,6 +18,6 @@
    * for configuration options and examples.                                  *
    *                                                                          *
    ***************************************************************************/
-  'GET /': 'home/index',
-  'GET /example': 'example/index',
+  'GET /servers/app': 'app-server/create',
+  'POST /servers/app': 'app-server/store',
 }
