@@ -37,7 +37,7 @@ module.exports = {
         sizeIdentifier
       )
 
-      // await sails.helpers.applyGeneratedConfig(uniqueDirIdentifier)
+      await sails.helpers.runTerraformWorkflow(uniqueDirIdentifier)
 
       await AppServerResource.create({
         name,
